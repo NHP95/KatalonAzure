@@ -23,7 +23,7 @@ stages:
       - script: |
           cd Gravity
           ls -la
-          docker run -t --rm -v "$(pwd)":/katalon/katalon/source katalonstudio/katalon katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/APISuite" -apiKey=f9faa583-d0ea-48a9-b7dd-3b15fbb7e690
+          docker run -t --rm -v "$(pwd)":/katalon/katalon/source katalonstudio/katalon katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/$(SUITE_NAME)" -apiKey=$(API_KEY)
           cd report
           ls -la
         displayName: 'Execute Test'
