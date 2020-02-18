@@ -15,7 +15,7 @@ stages:
       - task: Gradle@2
         inputs:
           gradleWrapperFile: 'gradlew'
-          workingDirectory: '/Gravity'
+          workingDirectory: $(Agent.BuildDirectory)/Gravity
           tasks: 'katalonCopyDependencies'
           publishJUnitResults: false
           javaHomeOption: 'JDKVersion'
