@@ -1,18 +1,24 @@
-trigger: none
+trigger: 
+  tags:
+    include:
+      - regression
+
 pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-- stage: 'Build App'
-  jobs:
-  - job:
-    steps:
-      - bash: echo "Checkout Latest Code"
-  - job: 
-    steps:
-      - bash: echo "Build Docker Images"
-
 - stage: 'Testing'
   jobs:
-  - job: B1
+  - job: setup
+    steps:
+      - bash: echo "Set up dependencies"
+      - task: Gradle@2
+        inputs:
+          gradleWrapperFile: 'gradle'
+          workingDirectory: '/Gravity'
+          tasks: 'katalonCopyDependencies'
+          publishJUnitResults: false
+          javaHomeOption: 'JDKVersion'
+          sonarQubeRunAnalysis: false
+
   - job: B2
