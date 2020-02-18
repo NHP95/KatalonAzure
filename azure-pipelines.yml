@@ -12,6 +12,7 @@ stages:
   - job: SetUp
     steps:
       - bash: echo "Set up dependencies"
+      - bash: ls -a
       - task: katalonTask@0
         inputs:
           version: '7.2.4'
