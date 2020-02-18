@@ -12,13 +12,15 @@ stages:
   - job: SetUp
     steps:
       - bash: echo "============Set up dependencies============"
-      - task: Gradle@2
-        inputs:
-          gradleWrapperFile: 'gradlew'
-          workingDirectory: $(Agent.BuildDirectory)/Gravity
-          tasks: 'katalonCopyDependencies'
-          publishJUnitResults: false
-          javaHomeOption: 'JDKVersion'
-          sonarQubeRunAnalysis: false
+      - bash: echo "$(pwd)"
+      - bash: ls -a
+      # - task: Gradle@2
+      #   inputs:
+      #     gradleWrapperFile: 'gradlew'
+      #     workingDirectory: $(Agent.BuildDirectory)/Gravity
+      #     tasks: 'katalonCopyDependencies'
+      #     publishJUnitResults: false
+      #     javaHomeOption: 'JDKVersion'
+      #     sonarQubeRunAnalysis: false
      
 
