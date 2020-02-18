@@ -11,10 +11,6 @@ stages:
   jobs:
   - job: SetUp
     steps:
-      - bash: echo "============Set up dependencies============"
-      - bash: echo "$(pwd)"
-      - bash: echo "$(Agent.BuildDirectory)"
-      - bash: ls -a
       - task: Gradle@2
         inputs:
           gradleWrapperFile: 'gradlew'
