@@ -14,7 +14,7 @@ stages:
       - bash: echo "Set up dependencies"
       - task: katalonTask@0
         inputs:
-          version: '7.2.1'
+          version: '7.2.4'
           executeArgs: '-projectPath="$(Agent.BuildDirectory)/Gravity/Gravity.prj" -retry=0 -testSuitePath="Test Suites/APISuite" -executionProfile="default" -browserType="Chrome" -apiKey="f9faa583-d0ea-48a9-b7dd-3b15fbb7e690"'
 
      
