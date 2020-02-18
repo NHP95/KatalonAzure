@@ -11,12 +11,14 @@ stages:
   jobs:
   - job: SetUp
     steps:
-      - bash: echo "Set up dependencies"
-      - bash: ls -a
-      - task: katalonTask@0
+      - bash: echo "============Set up dependencies============"
+      - task: Gradle@2
         inputs:
-          version: '7.2.4'
-          executeArgs: '-projectPath="$(Agent.BuildDirectory)/Gravity/Gravity.prj" -retry=0 -testSuitePath="Test Suites/APISuite" -executionProfile="default" -browserType="Chrome" -apiKey="f9faa583-d0ea-48a9-b7dd-3b15fbb7e690"'
-
+          gradleWrapperFile: 'gradlew'
+          workingDirectory: '/Gradle'
+          tasks: 'katalonCopyDependencies'
+          publishJUnitResults: false
+          javaHomeOption: 'JDKVersion'
+          sonarQubeRunAnalysis: false
      
 
