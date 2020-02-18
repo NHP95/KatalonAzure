@@ -23,5 +23,13 @@ stages:
           publishJUnitResults: false
           javaHomeOption: 'JDKVersion'
           sonarQubeRunAnalysis: false
+      
+      - script: |
+          cd Gravity
+          ls -la
+          docker run -t --rm -v "$(pwd)":/katalon/katalon/source katalonstudio/katalon katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/APISuite" -apiKey=f9faa583-d0ea-48a9-b7dd-3b15fbb7e690
+          cd report
+          ls -la
+        displayName: 'Execute Test'
      
 
