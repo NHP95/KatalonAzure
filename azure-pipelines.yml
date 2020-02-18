@@ -6,19 +6,16 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-stages:
-- stage: 'Testing'
   jobs:
   - job: setup
     steps:
       - bash: echo "Set up dependencies"
       - task: Gradle@2
         inputs:
-          gradleWrapperFile: 'gradle'
+          gradleWrapperFile: '/Gravity/build.gradle'
           workingDirectory: '/Gravity'
           tasks: 'katalonCopyDependencies'
           publishJUnitResults: false
           javaHomeOption: 'JDKVersion'
           sonarQubeRunAnalysis: false
 
-  - job: B2
