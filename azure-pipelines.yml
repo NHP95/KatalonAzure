@@ -2,11 +2,17 @@ trigger: none
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: 'Build App'
+  jobs:
+  - job:
+    steps:
+      - bash: echo "Checkout Latest Code"
+  - job: 
+    steps:
+      - bash: echo "Build Docker Images"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- stage: 'Testing'
+  jobs:
+  - job: B1
+  - job: B2
